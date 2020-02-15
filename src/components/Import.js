@@ -10,6 +10,7 @@ import TableCell from '@material-ui/core/TableCell'
 const Import = (props) => {
     return (
     <>
+        <h2>Number of Rows: {props.makes.length}</h2>
         <Button onClick = {props.fetchMakes} variant="contained" color="primary">Import</Button>
 
       <Table aria-label="simple table">
@@ -25,7 +26,10 @@ const Import = (props) => {
             <TableRow key={row.MakeId}>
               <TableCell>{row.MakeId}</TableCell>
               <TableCell>{row.MakeName}</TableCell>
-              <TableCell>Actions Here</TableCell>
+
+              {/* Delete the specified row */}
+              <TableCell><Button onClick = {() => props.deleteMake(row.MakeId)} variant="contained" color="secondary">Delete Make</Button></TableCell>
+
             </TableRow>
           ))}
         </TableBody>
